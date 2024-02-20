@@ -11,6 +11,9 @@ public class PresAvecSpringVersXml {
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
         IMetier metier = ctx.getBean(IMetier.class);
+        /*
+        * équivalent à : IMetier metier = (IMetier) ctx.getBean("metier");
+         */
         System.out.println(metier.calcul());
 
     }
