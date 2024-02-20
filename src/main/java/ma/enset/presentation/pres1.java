@@ -7,6 +7,7 @@ import ma.enset.metier.MetierImpl;
 public class pres1 {
     /*
     * injection de dépendance par instanciation statique
+    *
      */
     public static void main(String[] args) {
 
@@ -18,11 +19,12 @@ public class pres1 {
         *  ou dao n'est pas encore injecté
          */
         DaoImpl dao=new DaoImpl();
-        metier.setDao(dao);
+        metier.setDao(dao); // injection de dépendance
         System.out.println(metier.calcul());
 
         /*
         * j'ai des classes alors je suis pas fermé à la modification
+        * avec chaque modification, je dois modifier le code source
          */
     }
 }

@@ -13,6 +13,11 @@ public class pres2 {
     /*
      * injection de dépendance par instanciation dynamique
      */
+
+    /*
+    * instanciation dynamique + couplage faible
+    * ==> fermeture de l'application à la modification et ouverture à l'extension
+     */
     public static void main(String[] args) throws Exception {
 
             Scanner scanner = new Scanner(new File("config.txt"));
@@ -20,9 +25,12 @@ public class pres2 {
 
             String daoClassName = scanner.nextLine();
             //System.out.println(daoClassName);
+
+            //chargement dynamique de la classe en mémoire à partir de son nom
             Class cDao = Class.forName(daoClassName);
             //Object dao = cDao.newInstance(); // car newInstance() est retourné par Object
             IDao dao = (IDao) cDao.getConstructor().newInstance();
+            //il faut ajouter throws Exception car on peut ne pas trouver le constructeur
             /*
             *les trois lignes ci-dessus sont équivalentes à:
             * IDao dao = new DaoImpl();
@@ -43,6 +51,7 @@ public class pres2 {
 
         // injection de dépendance par réflexion
         Method m = cMetier.getMethod("setDao", IDao.class);
+        //IDao.class c'est le type de paramètre de la méthode setDao
         m.invoke(metier, dao); //appel de la méthode setDao de l'objet metier
         /*
         MetierImpl metier=new MetierImpl();
@@ -54,11 +63,7 @@ public class pres2 {
         DaoImpl dao=new DaoImpl();
         metier.setDao(dao);
          */
-
-
-
-
-
+        
 
             System.out.println(dao.getData());
 

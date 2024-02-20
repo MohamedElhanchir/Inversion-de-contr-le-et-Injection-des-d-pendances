@@ -6,6 +6,7 @@ public class DaoImpl implements IDao{
         /*
         * connect to the database
          */
+        System.out.println("version base de données");
         return 98;
     }
 }

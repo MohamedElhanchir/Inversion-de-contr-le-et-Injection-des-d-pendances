@@ -9,6 +9,10 @@ public class MetierImpl implements IMetier{
      */
     private IDao dao;
 
+    /*
+    * Pour permettre dans le variable dao de recevoir un objet de type IDao
+    * on peut utiliser le constructeur ou la méthode setDao pour injecter la dépendance
+     */
     public void setDao(IDao dao) {
         this.dao = dao;
     }
