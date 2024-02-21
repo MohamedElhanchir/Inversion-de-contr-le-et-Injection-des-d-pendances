@@ -5,6 +5,9 @@
 
     <bean id="dao" class="ma.enset.dao.DaoImpl"></bean>
     <bean id="metier" class="ma.enset.metier.MetierImpl">
-    <property name="dao" ref="dao"></property>
+        <!-- ceci utilise le constructeur par défaut
+         maintenat le constructeur par déf est annulé-->
+<!--    <property name="dao" ref="dao"></property>-->
+        <constructor-arg ref="dao"></constructor-arg>
     </bean>
 </beans>

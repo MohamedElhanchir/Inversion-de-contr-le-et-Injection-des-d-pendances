@@ -39,7 +39,8 @@ public class pres2 {
 
            String metierClassName = scanner.nextLine();
            Class cMetier = Class.forName(metierClassName);
-           IMetier metier = (IMetier) cMetier.getConstructor().newInstance();
+           //getConestructor('type de paramètre')
+           IMetier metier = (IMetier) cMetier.getConstructor(IDao.class).newInstance(dao);
            /*
            * spring framework fait la même chose que les 3 lignes ci-dessus
             */
@@ -50,9 +51,9 @@ public class pres2 {
         // pour résoudre ce problème, on va utiliser la réflexion pour injecter la dépendance dynamiquement
 
         // injection de dépendance par réflexion
-        Method m = cMetier.getMethod("setDao", IDao.class);
+             //Method m = cMetier.getMethod("setDao", IDao.class);
         //IDao.class c'est le type de paramètre de la méthode setDao
-        m.invoke(metier, dao); //appel de la méthode setDao de l'objet metier
+             //m.invoke(metier, dao); //appel de la méthode setDao de l'objet metier
         /*
         MetierImpl metier=new MetierImpl();
 

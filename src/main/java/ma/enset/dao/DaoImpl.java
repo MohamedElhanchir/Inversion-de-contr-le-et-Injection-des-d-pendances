@@ -2,6 +2,7 @@ package ma.enset.dao;
 
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /*
 * pour dire à spring que cette classe est un bean
@@ -9,7 +10,10 @@ import org.springframework.stereotype.Component;
  *Ceci va remplacer ceci <bean id="dao" class="ma.enset.dao.DaoImpl"></bean>
  * dans le fichier config.xml
  */
-@Component("vbdd")
+
+//@repository est une spécialisation de @Component pour la couche DAO
+//@Component("vbdd")
+@Repository
 public class DaoImpl implements IDao{
     @Override
     public double getData() {

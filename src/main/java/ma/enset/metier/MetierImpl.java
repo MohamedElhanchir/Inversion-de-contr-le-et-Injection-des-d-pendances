@@ -4,9 +4,11 @@ import ma.enset.dao.IDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-
-@Component("metier")
+//@Service est une spécialisation de @Component pour la couche métier
+//@Component("metier")
+@Service("metier")
 public class MetierImpl implements IMetier{
 
     /*
@@ -21,9 +23,18 @@ public class MetierImpl implements IMetier{
     /*
     * il faut ajouter @qualifier pour dire à spring quel bean il doit injecter
      */
-    @Autowired
-    @Qualifier("vws")
+
+
+    //@Autowired
+    //@Qualifier("vws")
     private IDao dao;
+
+    /*
+    * injection de dépendance par le constructeur
+     */
+    public MetierImpl(IDao dao) {
+        this.dao = dao;
+    }
 
     /*
     * Pour permettre dans le variable dao de recevoir un objet de type IDao

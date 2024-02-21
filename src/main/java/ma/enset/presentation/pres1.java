@@ -11,7 +11,7 @@ public class pres1 {
      */
     public static void main(String[] args) {
 
-        MetierImpl metier=new MetierImpl();
+        //MetierImpl metier=new MetierImpl();
 
        // System.out.println(metier.calcul());
         /*
@@ -19,6 +19,7 @@ public class pres1 {
         *  ou dao n'est pas encore injecté
          */
         DaoImpl dao=new DaoImpl();
+        MetierImpl metier=new MetierImpl(dao); // injection par le constructeur
         metier.setDao(dao); // injection de dépendance
         System.out.println(metier.calcul());
 
